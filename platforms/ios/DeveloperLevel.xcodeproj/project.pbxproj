@@ -23,6 +23,8 @@
 		427AF14A111043B9A272D39F /* CDVReachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 486572145EF3464DB26A1AB8 /* CDVReachability.m */; };
 		90A64991F6754B4683B06231 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FB4B1CC7519042C8806569ED /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA2CB232C5114EDE8E1893DA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB7D7805CB884E288C6D93BB /* CoreTelephony.framework */; };
+		5DE6A920680D4F6F862B3FFF /* CDVSplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = CC22FEBF1D104C3F9B950B29 /* CDVSplashScreen.m */; };
+		6C6B9E4F8E2C4D09BF83E1B0 /* CDVViewController+SplashScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = DF68CE18D8E3494DB9743FFA /* CDVViewController+SplashScreen.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +75,10 @@
 		5137E22F2B644F2586F6A178 /* CDVReachability.h */ = {isa = PBXFileReference; name = "CDVReachability.h"; path = "cordova-plugin-network-information/CDVReachability.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		FB4B1CC7519042C8806569ED /* SystemConfiguration.framework */ = {isa = PBXFileReference; name = "SystemConfiguration.framework"; path = "System/Library/Frameworks/SystemConfiguration.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
 		CB7D7805CB884E288C6D93BB /* CoreTelephony.framework */ = {isa = PBXFileReference; name = "CoreTelephony.framework"; path = "System/Library/Frameworks/CoreTelephony.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		CC22FEBF1D104C3F9B950B29 /* CDVSplashScreen.m */ = {isa = PBXFileReference; name = "CDVSplashScreen.m"; path = "cordova-plugin-splashscreen/CDVSplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		DF68CE18D8E3494DB9743FFA /* CDVViewController+SplashScreen.m */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.m"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		A002A3BC85AE4F79BE3609B4 /* CDVSplashScreen.h */ = {isa = PBXFileReference; name = "CDVSplashScreen.h"; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
+		46F8C2291BA84092961DC276 /* CDVViewController+SplashScreen.h */ = {isa = PBXFileReference; name = "CDVViewController+SplashScreen.h"; path = "cordova-plugin-splashscreen/CDVViewController+SplashScreen.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +195,10 @@
 				486572145EF3464DB26A1AB8 /* CDVReachability.m */,
 				1F2B45FB14DC4ED9A50D1100 /* CDVConnection.h */,
 				5137E22F2B644F2586F6A178 /* CDVReachability.h */,
+				CC22FEBF1D104C3F9B950B29 /* CDVSplashScreen.m */,
+				DF68CE18D8E3494DB9743FFA /* CDVViewController+SplashScreen.m */,
+				A002A3BC85AE4F79BE3609B4 /* CDVSplashScreen.h */,
+				46F8C2291BA84092961DC276 /* CDVViewController+SplashScreen.h */,
 			);
 			name = Plugins;
 			path = "DeveloperLevel/Plugins";
@@ -305,6 +315,8 @@
 				2EAD272C95AF43FCB07BDAAD /* CDVNotification.m in Sources */,
 				7557D6CCB4244B3D99E38ED2 /* CDVConnection.m in Sources */,
 				427AF14A111043B9A272D39F /* CDVReachability.m in Sources */,
+				5DE6A920680D4F6F862B3FFF /* CDVSplashScreen.m in Sources */,
+				6C6B9E4F8E2C4D09BF83E1B0 /* CDVViewController+SplashScreen.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -388,6 +400,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Debug;
 		};
@@ -413,6 +426,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = NO;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 			};
 			name = Release;
 		};

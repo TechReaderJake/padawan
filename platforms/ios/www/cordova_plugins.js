@@ -24,6 +24,14 @@ module.exports = [
     "clobbers": [
       "Connection"
     ]
+  },
+  {
+    "id": "cordova-plugin-splashscreen.SplashScreen",
+    "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+    "pluginId": "cordova-plugin-splashscreen",
+    "clobbers": [
+      "navigator.splashscreen"
+    ]
   }
 ];
 module.exports.metadata = 
@@ -31,7 +39,8 @@ module.exports.metadata =
 {
   "cordova-plugin-dialogs": "2.0.1",
   "cordova-plugin-network-information": "2.0.1",
-  "cordova-plugin-whitelist": "1.3.3"
+  "cordova-plugin-whitelist": "1.3.3",
+  "cordova-plugin-splashscreen": "5.0.2"
 };
 // BOTTOM OF METADATA
 });
