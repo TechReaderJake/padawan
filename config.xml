@@ -9,6 +9,7 @@
     </author>
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
+    <preference name="EnableViewportScale" value="true" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -23,6 +24,20 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+        <icon height="180" src="res/icon/ios2/icon-60@3x.png" width="180" />
+        <icon height="60" src="res/icon/ios2/icon-60.png" width="60" />
+        <icon height="120" src="res/icon/ios2/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/icon/ios2/icon-76.png" width="76" />
+        <icon height="152" src="res/icon/ios2/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/icon/ios2/icon-40.png" width="40" />
+        <icon height="57" src="res/icon/ios2/icon.png" width="57" />
+        <icon height="114" src="res/icon/ios2/icon@2x.png" width="114" />
+        <icon height="72" src="res/icon/ios2/icon-72.png" width="72" />
+        <icon height="144" src="res/icon/ios2/icon-72@2x.png" width="144" />
+        <icon height="80" src="res/icon/ios2/icon-40@2x.png" width="80" />
+        <icon height="29" src="res/icon/ios2/icon-small.png" width="29" />
+        <icon height="58" src="res/icon/ios2/icon-small@2x.png" width="58" />
+        <icon height="167" src="res/icon/ios2/icon-83.5@2x.png" width="167" />
         <splash src="res/screen/ios/Default@2x~universal~anyany.png" />
     </platform>
     <plugin name="cordova-plugin-dialogs" spec="^2.0.1" />
