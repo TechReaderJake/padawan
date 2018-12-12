@@ -50,4 +50,7 @@ var app = {
 
 app.initialize();
 
+
+///// To run cordova on ios use code below
 // cordova run ios --buildFlag='-UseModernBuildSystem=0'
+       

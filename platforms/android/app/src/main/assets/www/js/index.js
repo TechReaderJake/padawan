@@ -50,10 +50,7 @@ var app = {
 
 app.initialize();
 
+
+///// To run cordova on ios use code below
 // cordova run ios --buildFlag='-UseModernBuildSystem=0'
-        // <icon density="ldpi" src="res/icon/android2/ldpi.png" />
-        // <icon density="mdpi" src="res/icon/android2/mdpi.png" />
-        // <icon density="hdpi" src="res/icon/android2/hdpi.png" />
-        // <icon density="xhdpi" src="res/icon/android2/xhdpi.png" />
-        // <icon density="xxhdpi" src="res/icon/android2/xxhdpi.png" />
-        // <icon density="xxxhdpi" src="res/icon/android2/xxxhdpi.png" />
+       
