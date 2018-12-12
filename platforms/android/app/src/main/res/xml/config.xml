@@ -14,6 +14,10 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
     <name>DeveloperLevel</name>
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
@@ -38,7 +42,10 @@
     <icon density="xxhdpi" src="res/icon/android2/xxhdpi.png" />
     <icon density="xxxhdpi" src="res/icon/android2/xxxhdpi.png" />
     <preference name="loglevel" value="DEBUG" />
-    <preference name="EnableViewportScale" value="true" />
     <preference name="AutoHideSplashScreen" value="true" />
     <preference name="SplashScreenDelay" value="0" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <preference name="StatusBarDefaultScrollToTop" value="false" />
 </widget>
