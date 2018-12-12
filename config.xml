@@ -10,6 +10,8 @@
     <content src="index.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <preference name="EnableViewportScale" value="true" />
+    <preference name="AutoHideSplashScreen" value="true" />
+    <preference name="SplashScreenDelay" value="0" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -20,6 +22,12 @@
     <allow-navigation href="http://app.developerlevel.com" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <icon density="ldpi" src="res/icon/android2/ldpi.png" />
+        <icon density="mdpi" src="res/icon/android2/mdpi.png" />
+        <icon density="hdpi" src="res/icon/android2/hdpi.png" />
+        <icon density="xhdpi" src="res/icon/android2/xhdpi.png" />
+        <icon density="xxhdpi" src="res/icon/android2/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/icon/android2/xxxhdpi.png" />
     </platform>
     <platform name="ios">
         <allow-intent href="itms:*" />
