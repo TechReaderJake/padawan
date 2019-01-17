@@ -35,9 +35,24 @@ Template.questions.helpers({
         let u = User.findOne({_id:Template.instance().userId});
         if (!u) return -1;
         let rmn = Math.max(0, (minQuestionsAnswered - u.MyProfile.UserType.AnsweredQuestions.length));
-        //let rmn = 0;
         return rmn;
     },
+	remainingTotalQCount() {
+        let u = User.findOne({_id:Template.instance().userId});
+        if (!u) return -1;
+		let total = 1; //for some reason if this is a negative number the submit button won't appear
+        Meteor.call('question.countQuestions', u._id, (error, result) => {
+            if (error) {
+                //console.log("EEERRR0r: ", error);
+				return -1
+            } else {
+                //success
+        		total = Math.max(0, (result - u.MyProfile.UserType.AnsweredQuestions.length));
+				return total;
+            }
+        });
+		return total;
+	},
     isRemainingGreaterThan(num) {
     let userId = {_id:Template.instance().userId};
     let u = User.findOne(userId);
@@ -51,8 +66,7 @@ Template.questions.helpers({
     answeredQuestionsLength() {
         let u = User.findOne({_id:Template.instance().userId});
         let length = u.MyProfile.UserType.AnsweredQuestions.length;
-        //console.log("answeredQuestionsLengthhhhhhhhh", length);
-        return length
+        return length;
     },
     totalQuestions() {
         let u = User.findOne({_id:Template.instance().userId});
@@ -72,6 +86,16 @@ Template.questions.helpers({
             }
         });
         return total;
+    },
+    currentResultsTrue(){
+        let u = User.findOne({_id:Template.instance().userId});
+        let length = u.MyProfile.UserType.AnsweredQuestions.length;
+        return length >= minQuestionsAnswered && length < 122;
+    },
+    finalResultsTrue(){
+        let u = User.findOne({_id:Template.instance().userId});
+        let length = u.MyProfile.UserType.AnsweredQuestions.length;
+        return length >= 122;
     }
 });
 
@@ -106,7 +130,11 @@ Template.questions.events({
                 }
             }
         });
-    }
+    },
+    'click a#nav-results'(event, instance) {
+        event.preventDefault();
+        FlowRouter.go('/results');
+    },
 });
 
 Template.question.helpers({

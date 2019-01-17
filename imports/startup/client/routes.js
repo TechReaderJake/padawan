@@ -25,13 +25,24 @@ import '../../ui/pages/individual_goals/individual_goals.js';
 import '../../ui/pages/user_dashboard/user_dashboard.js';
 import '../../ui/pages/ask_questions/ask_questions.js';
 import '../../ui/pages/dash_min/dash_min.js';
+import '../../ui/pages/qnaire_build/qnaire_build.js';
+import '../../ui/pages/qnaire_list/qnaire_list.js';
+import '../../ui/pages/qnaire/qnaire.js';
 import '../../ui/pages/user_profile/user_profile.js';
 import '../../ui/pages/not-found/not-found.js';
 import '../../ui/pages/verify/verify.js';
 import '../../ui/pages/user_segments/user_segments.js';
 import '../../ui/layouts/login/login.js';
+import '../../ui/pages/results/results.js';
 import '../../ui/pages/verify/verify.html';
 import '../../ui/pages/verify/verify.js';
+import '../../ui/pages/admin_reports/admin_reports.html';
+import '../../ui/pages/admin_reports/admin_reports.js';
+import '../../ui/pages/admin_reports/report_default/report_default.html';
+import '../../ui/pages/admin_reports/report_default/report_default.js';
+import '../../ui/pages/admin_reports/mbti_report/mbti_report.html';
+import '../../ui/pages/admin_reports/mbti_report/mbti_report.js';
+
 import { resolveSoa } from 'dns';
 
 // returns true if there is a verified email
@@ -88,6 +99,27 @@ FlowRouter.route('/tools', {
         // }
     }
 });
+FlowRouter.route('/tools/reports', {
+    triggersEnter: [AccountsTemplates.ensureSignedIn],
+    name: 'admin_reports',
+    action() {
+        BlazeLayout.render('App_body', { top: 'header', main: 'admin_reports' });
+    }
+});
+FlowRouter.route('/tools/reports/:_id', {
+    triggersEnter: [AccountsTemplates.ensureSignedIn],
+    name: 'reports.show.id',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'report_default' });
+    }
+});
+FlowRouter.route('/tools/reports/custom/:title', {
+    triggersEnter: [AccountsTemplates.ensureSignedIn],
+    name: 'reports.show.custom',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'mbti_report' });
+    }
+});
 FlowRouter.route('/controlcenter', {
 	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
     name: 'controlcenter',
@@ -100,6 +132,13 @@ FlowRouter.route('/questions', {
     name: 'ask_questions',
     action() {
       BlazeLayout.render('App_body', { top: 'header', main: 'ask_questions' });
+    },
+});
+FlowRouter.route('/results', {
+    triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
+    name: 'results',
+    action() {
+        BlazeLayout.render('App_body', { top: 'header', main: 'results' });
     },
 });
 FlowRouter.route('/signin', {
@@ -133,6 +172,34 @@ FlowRouter.route('/adminTeams', {
         BlazeLayout.render('App_body', { top: 'header', main: 'admin_teams' });
     }
 });
+FlowRouter.route('/qnaire', {
+	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
+    name: 'qnaire',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'qnaire' });
+    }
+});
+FlowRouter.route('/qnaire/:qnaireId', {
+	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
+    name: 'qnaire',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'qnaire' });
+    }
+});
+FlowRouter.route('/qnaireBuild/:qnaireId', {
+	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
+    name: 'qnaireBuild',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'qnaire_build' });
+    }
+});
+FlowRouter.route('/qnaireList', {
+	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
+    name: 'qnaireList',
+    action(params, queryParams) {
+        BlazeLayout.render('App_body', { top: 'header', main: 'qnaire_list' });
+    }
+});
 FlowRouter.route('/adminTeams/:teamName', {
 	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
     name: 'adminTeams',
@@ -141,21 +208,21 @@ FlowRouter.route('/adminTeams/:teamName', {
     }
 });
 FlowRouter.route('/learnShareList', {
-	triggersEnter: [AccountsTemplates.ensureSignedIn, ensureEmailVerified],
+	triggersEnter: [AccountsTemplates.ensureSignedIn,ensureEmailVerified],
     name: 'learnShareList',
     action(params, queryParams) {
         BlazeLayout.render('App_body', { top: 'header', main: 'learn_share_list' });
     }
 });
 FlowRouter.route('/learnShare/:lssid', {
-    //triggersEnter: [AccountsTemplates.ensureSignedIn, ensureEmailVerified],
+    //triggersEnter: [AccountsTemplates.ensureSignedIn],
     name: 'learnShare',
     action(params, queryParams) {
         BlazeLayout.render('App_body', { top: 'header', main: 'learn_share' });
     }
 });
 FlowRouter.route('/learnShare', {
-    //triggersEnter: [AccountsTemplates.ensureSignedIn, ensureEmailVerified],
+    //triggersEnter: [AccountsTemplates.ensureSignedIn],
     name: 'learnShare',
     action(params, queryParams) {
 		if (sessionStorage.lastLearnShareId) {

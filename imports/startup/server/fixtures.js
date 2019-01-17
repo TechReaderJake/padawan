@@ -11,6 +11,8 @@ import { TypeReading, ReadingRange, TypeReadingCategory } from '../../api/type_r
 import { LearnShareSession } from '../../api/learn_share/learn_share.js';
 import { IndividualGoal } from '../../api/individual_goals/individual_goals.js';
 import { Category, CategoryManager } from '../../api/categories/categories.js';
+import { Report, Reports } from "../../api/reports/reports.js";
+import { mbtiReport } from '../../api/reports/customReports.js';
 
 
 Meteor.startup(() => {
@@ -25,7 +27,7 @@ Meteor.startup(() => {
             teams: [Team.Default.Name]
         });
         let t = Team.findOne( {Name: Team.Default.Name} );
-        t.CreatedBy = userId;
+        t.CreatedBy = defaultUserId;
         t.save();
     }
 
@@ -111,7 +113,8 @@ Meteor.startup(() => {
                 res.write('404 not found');
                 res.end();
             }
-  	});
+      });
+
     /////////////////////////////////////BELOW IS FOR SAMPLE DATA////////////////////////////////////////
 
     // if del is 1, remove previously added data
@@ -231,7 +234,11 @@ Meteor.startup(() => {
 
         // creates totalQ questions if there are less then addQ Questions
         const addQ = 122;
+<<<<<<< HEAD
         const totalQ = 10;
+=======
+        const totalQ = 30;
+>>>>>>> master
         if(Question.find().count() < addQ) {
             for (let i = 1; i <= totalQ; i++) {
                 let str = i.toString();
@@ -264,21 +271,22 @@ Meteor.startup(() => {
                     Name: tmName,
                     Active: true
                 });
-                /*
-                Team.insert({
-                    CreatedBy: theAdmin._id,
-                    Name: tmName,
-                    Active: true
-                });
-                //console.log("A team was inserted");
-                let tm = Team.findOne({Name: tmName});
-                */
+
+                // Team.insert({
+                //     CreatedBy: theAdmin._id,
+                //     Name: tmName,
+                //     Active: true
+                // });
+                // //console.log("A team was inserted");
+                // let tm = Team.findOne({Name: tmName});
+
                 console.log("got to teamusrs");
                 let usrs = [];
                 for (let j = 0; j <= (i % usrNames.length); j++) {
                     //console.log("i = %s\nj = %s", i, j);
                     let usr = Meteor.users.findOne({username: usrNames[j]});
                     usrs.push(usr._id);
+
                     /*
                     //console.log("cursor1");
                     Meteor.users.update(usr._id, {$push: {teams: tmName}});
@@ -337,7 +345,6 @@ Meteor.startup(() => {
             }
             // console.log("end of learnShare");
         }
-
 
         // creates totalIG IndividualGoal's if there are less then addIG IndividualGoal's
         const addIG = 7;
@@ -400,8 +407,6 @@ Meteor.startup(() => {
             // console.log("Made it to the end of TypeReading");
         }
 
-
-
         // creates totalCG Category's if there are less then addCG Category's
         const addCG = 7;
         const totalCG = 10;
@@ -417,12 +422,100 @@ Meteor.startup(() => {
                     name: cgName,
                     description: cgDesc
                 });
-                cg.save();
             }
         }
 
+        // count the reports 
+        console.log(Reports.find().count())
+        
+        // test for mbti report existence and add it if it doesn't exist 
+        if ( Reports.findOne({ title: 'mbti' }) ) {
+            console.log('the mbti report exists')
+            Meteor.call('updateMBTIReport')
+        } else {
+            let mbti = new mbtiReport()
+            mbti.addMBTIReport()
+        }
+
+        // populate sample reports
+        if (Reports.find().count() < 4) {
+
+            let sampReport = new Reports({
+                title: 'Test Report 1',
+                description: 'this is a sample report',
+                url: 'testreport',
+                dateCreated: new Date(),
+                custom: false,
+                data: new Report({
+                    reportData: {
+                        data1: 'some data here',
+                        data2: 'some more data here',
+                        data3: 'even more data here',
+                    }
+                })
+            })
+            console.log(sampReport)
+            sampReport.save()
+
+            let sampReport2 = new Reports({
+                title: 'Test Report 2',
+                description: 'this is a sample report',
+                url: 'testreport',
+                dateCreated: new Date(),
+                custom: false,
+                data: new Report({
+                    reportData: {
+                        data1: 'some data here',
+                        data2: 'some more data here',
+                        data3: 'even more data here',
+                    }
+                })
+            })
+            console.log(sampReport2)
+            sampReport2.save()
+
+            let sampReport3 = new Reports({
+                title: 'Test Report 3',
+                description: 'this is a sample report',
+                url: 'testreport',
+                dateCreated: new Date(),
+                custom: false,
+                data: new Report({
+                    reportData: {
+                        data1: 'some data here',
+                        data2: 'some more data here',
+                        data3: 'even more data here',
+                    }
+                })
+            })
+            console.log(sampReport3)
+            sampReport3.save()
+
+            let sampReport4 = new Reports({
+                title: 'Test Report 4',
+                description: 'this is a sample report',
+                url: 'testreport',
+                dateCreated: new Date(),
+                custom: false,
+                data: new Report({
+                    reportData: {
+                        data1: 'some data here',
+                        data2: 'some more data here',
+                        data3: 'even more data here',
+                        data4: {
+                            data: 'some objecty stuff',
+                            data2: 'some more objecty stuff',
+                            data3: {
+                                title: 'a title of another object'
+                            }
+                        }
+                    }
+                })
+            })
+            console.log(sampReport4)
+            sampReport4.save()
+        }
 
     }// end of if(addSamples == 1)
-
 
 });
